@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 function ApiServices() {
   const services = [
     { id: 1, name: 'Blood Test Analysis', description: 'Analyzes blood test results and provides a detailed report and suggestions for recovering and enhancing lifestyle.' },
-    { id: 2, name: 'Compare Blood Tests', description: 'Compare two blood test reports.', action: 'Compares multiple blood test reports and provides a progress summary.' },,
+    { id: 2, name: 'Compare Blood Tests', description: 'Compares multiple blood test reports and provides a progress summary.' },,
   ];
 
   const handleStartService = (action) => {

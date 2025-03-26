@@ -1,6 +1,6 @@
 import React from 'react';
-import { Paper, Typography, Box, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
+import { Paper, Typography, Box, Grid, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell } from 'recharts';
 
 function HealthChart() {
   // Simulated health data with time series
