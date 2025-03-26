@@ -31,8 +31,8 @@ function App() {
         <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />} />
         <Route path="/dashboard" element={user ? <Dashboard isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} onLogout={handleLogout} /> : <Navigate to="/login" />}>
           <Route index element={<HealthChart />} />
-          <Route path="reports" element={<ReportList />} />
           <Route path="services" element={<ApiServices />} />
+          <Route path="reports" element={<ReportList />} />
           <Route path="profile" element={<Profile />} />
         </Route>
         <Route path="/" element={<Navigate to="/login" />} />

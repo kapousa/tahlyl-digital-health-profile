@@ -31,8 +31,8 @@ function Dashboard({ isMenuOpen, toggleMenu, onLogout }) {
 
   const menuItems = [
     { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-    { text: 'Reports', icon: <ListAltIcon />, path: '/dashboard/reports' },
     { text: 'Services', icon: <ApiIcon />, path: '/dashboard/services' },
+    { text: 'Reports', icon: <ListAltIcon />, path: '/dashboard/reports' },
   ];
 
   const handleMenuItemClick = (path) => {
