@@ -36,6 +36,7 @@ function Login({ onLogin }) {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button type="submit" variant="contained" color="primary" fullWidth>Login</Button>
+          <Typography>Use any username and password</Typography>
         </form>
       </Box>
     </Container>
