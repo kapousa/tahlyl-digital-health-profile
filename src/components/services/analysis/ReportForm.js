@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, Checkbox, FormControlLabel, Typography, CircularProgress, Select, MenuItem, Grid, Box } from '@mui/material';
 import axios from 'axios';
 import config from '../../../config'; // Assuming your config file path
@@ -12,7 +12,7 @@ function ReportForm({ onResult }) {
   const [error, setError] = useState(null);
   const [tone, setTone] = useState('General');
   const [unknownReportType, setUnknownReportType] = useState(false);
-  const [authToken, setAuthToken] = useState(localStorage.getItem('authToken') || null); // Get token from local storage
+  const [authToken] = useState(localStorage.getItem('authToken') || null); // Get token from local storage
 
   const reportTypeOptions = [
     { value: 'general', label: 'General Report' },
@@ -42,9 +42,9 @@ function ReportForm({ onResult }) {
     setUnknownReportType(false);
   };
 
-  const handleArabicChange = (event) => {
+  /*const handleArabicChange = (event) => {
     setIsArabic(event.target.checked);
-  };
+  };*/
 
   const handleUnknownReportTypeChange = (event) => {
     setUnknownReportType(event.target.checked);
