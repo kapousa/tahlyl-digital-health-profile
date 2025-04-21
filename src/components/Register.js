@@ -1,41 +1,34 @@
-// src/components/Login.js
-import React, { useState, useContext } from 'react';
-import { TextField, Button, Container, Typography, Box, Alert, Link } from '@mui/material';
+import React, { useState } from 'react';
+import { TextField, Button, Container, Typography, Box, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../contexts/UserContext'; // Import UserContext
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-function Login() {
+function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login } = useContext(UserContext); // Get login from context
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
-      const response = await fetch(`${API_BASE_URL}/users/login/`, {
+      const response = await fetch(`${API_BASE_URL}/users/register/`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: new URLSearchParams({
-          username: username,
-          password: password,
-        }),
+        body: JSON.stringify({ username, password, email }),
       });
 
       if (response.ok) {
-        const data = await response.json();
-        await login(data.access_token);
-        navigate('/dashboard');
+        navigate('/login'); // Redirect to login after successful registration
       } else {
         const errorData = await response.json();
-        setError(errorData.detail || 'Login failed');
+        setError(errorData.detail || 'Registration failed');
       }
     } catch (err) {
       setError('Network error. Please try again.');
@@ -45,7 +38,7 @@ function Login() {
   return (
     <Container maxWidth="sm">
       <Box mt={8}>
-        <Typography variant="h4" align="center" gutterBottom>Login</Typography>
+        <Typography variant="h4" align="center" gutterBottom>Register</Typography>
         {error && <Alert severity="error">{error}</Alert>}
         <form onSubmit={handleSubmit}>
           <TextField
@@ -65,14 +58,19 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit" variant="contained" color="primary" fullWidth>Login</Button>
+          <TextField
+            label="Email"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Button type="submit" variant="contained" color="primary" fullWidth>Register</Button>
         </form>
-        <Typography align="center" mt={2}>
-          Don't have an account? <Link component="button" variant="body2" onClick={() => navigate('/register')}>Register here</Link>
-        </Typography>
       </Box>
     </Container>
   );
 }
 
-export default Login;
+export default Register;

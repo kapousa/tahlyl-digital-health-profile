@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, AppBar, Toolbar, IconButton, Typography, Box, Avatar, Menu, MenuItem, useMediaQuery, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -7,9 +7,11 @@ import ApiIcon from '@mui/icons-material/Api';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate, Outlet } from 'react-router-dom';
+import { UserContext } from '../contexts/UserContext';
 
-function Dashboard({ isMenuOpen, toggleMenu, onLogout }) {
+function Dashboard({ isMenuOpen, toggleMenu }) {
   const navigate = useNavigate();
+  const { logout } = useContext(UserContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const [collapsed, setCollapsed] = useState(true);
@@ -30,7 +32,7 @@ function Dashboard({ isMenuOpen, toggleMenu, onLogout }) {
   };
 
   const handleLogoutClick = () => {
-    onLogout();
+    logout();
     navigate('/login');
   };
 
